@@ -3,3 +3,7 @@ When I was younger I was trying to imagine exactly how distance from the sun aff
 
 This project convinced me that html canvas is perhaps the most fun use of trigonometry possible, and should be introduced to every highschool curriculumn.
 
+link: https://collich55.github.io/Canvas-Sun/
+
+the buttons have a useful click and hold functionality.
+
