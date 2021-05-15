@@ -11,6 +11,21 @@ canvas = document.querySelector('canvas');
 num_lines_el = document.querySelector('.num-lines');
 num_dot_lines_el = document.querySelector('.num-dot-lines');
 radius_el = document.querySelector('.radius');
+buttons = document.querySelector('.buttons');
+
+buttons_opacity = true;
+
+document.addEventListener("keypress", function (event) {
+    if (event.key == 'h') {
+        if (buttons_opacity) {
+            buttons.style = "opacity: 0;"
+            buttons_opacity = false;
+        } else {
+            buttons.style = "opacity: 1;"
+            buttons_opacity = true;
+        }
+    }
+})
 
 radius_el.value = 40
 num_lines_el.value = 3;

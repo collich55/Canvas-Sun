@@ -35,15 +35,22 @@
             flex-direction: column;
             position: absolute;
         }
+        label, p {
+            color: rgb(170, 0, 0);
+        }
     </style>
 </head>
 <body>
-    <div class="buttons">
+    <div style="opacity: 1;" class="buttons">
         <!-- <button class="add-line" onclick="addLine()">Add Line</button>
         <button class="subtract-line" onclick="subtractLine()">Subtract Line</button> -->
-        <input class="num-lines" type="number" value=0>
-        <input class="num-dot-lines" type="number" value=0>
-        <input class="radius" type="number" value=0>
+        <label for="num-lines">Number of Lines</label>
+        <input class="num-lines" type="number" value=0 min=0>
+        <label for="num-dot-lines">Number of Lines from Lines</label>
+        <input class="num-dot-lines" type="number" value=0 min=0>
+        <label for="radius">Circle Radius</label>
+        <input class="radius" type="number" value=0 min=0>
+        <p>Press h to hide inputs</p>
     </div>
     <canvas></canvas>
     <script src='canvas.js' ></script>
