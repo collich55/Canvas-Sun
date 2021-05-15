@@ -12,11 +12,14 @@ ctx.beginPath();
 ctx.arc(pos_x, pos_y, radius, 0, 2 * Math.PI);
 ctx.stroke();
 
-let num_lines = 10;
+let num_lines = 1;
+let num_dot_lines = 10;
 
 let total = 2 * Math.PI;
+let dot_total = 2 * Math.PI;
 
 let each_line_degree = total/num_lines;
+let each_dot_line_degree = (dot_total / num_dot_lines);
 
 let start_line_x = 0;
 let start_line_y = 0;
@@ -26,6 +29,15 @@ let end_line_y = 0;
 
 
 function calcXandY(pos_x, pos_y, radius, radians) {
+    let arc_x = (Math.sin(radians) * radius) + pos_x;
+    let arc_y = (Math.cos(radians) * radius) + pos_y;
+    let arc_x_end = (Math.sin(radians) * 1000) + pos_x;
+    let arc_y_end = (Math.cos(radians) * 1000) + pos_y;
+
+    return [arc_x, arc_y, arc_x_end, arc_y_end]
+}
+
+function calcDotXandY(pos_x, pos_y, radius, radians) {
     let arc_x = (Math.sin(radians) * radius) + pos_x;
     let arc_y = (Math.cos(radians) * radius) + pos_y;
     let arc_x_end = (Math.sin(radians) * 1000) + pos_x;
@@ -166,13 +178,14 @@ function timer2() {
     }
 }
 
-let i = 0
-
+let i = 0;
+let j = 0;
 function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, innerWidth, innerHeight);
     // num_lines += 1;
     each_line_degree = total/num_lines;
+    each_dot_line_degree = (dot_total / num_dot_lines)/2;
     
     while (i < num_lines) {
         line_radians = i * each_line_degree;
@@ -186,6 +199,21 @@ function animate() {
         ctx.lineTo(end_line_x, end_line_y);
         ctx.stroke();
         i += 1;
+    
+        while (j < num_dot_lines) {
+            line_dot_radians = (j * (each_dot_line_degree)) + line_radians - (Math.PI/2);
+            dot_pos_info = calcDotXandY(start_line_x, start_line_y, radius, line_dot_radians);
+            // start_line_x = pos_info[0];
+            // start_line_y = pos_info[1];
+            end_line_x = dot_pos_info[2];
+            end_line_y = dot_pos_info[3];
+            ctx.beginPath();
+            ctx.moveTo(start_line_x, start_line_y);
+            ctx.lineTo(end_line_x, end_line_y);
+            ctx.stroke();
+            j += 1;
+        }
+        j = 0;
     }
     ctx.beginPath();
     ctx.arc(pos_x, pos_y, radius, 0, 2 * Math.PI);
