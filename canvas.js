@@ -33,7 +33,7 @@ document.addEventListener("keypress", function (event) {
 })
 
 radius_el.value = 40
-num_lines_el.value = 3;
+num_lines_el.value = 1;
 num_dot_lines_el.value = 6;
 circle_color = circle_color_el.value
 circle_line_color = circle_line_color_el.value
