@@ -44,7 +44,7 @@ let num_lines = num_lines_el.value;
 let num_dot_lines = num_dot_lines_el.value;
 
 let total = 2 * Math.PI;
-let dot_total = 2 * Math.PI;
+let dot_total = 2 *Math.PI;
 
 let each_line_degree = total/num_lines;
 let each_dot_line_degree = dot_total / num_dot_lines;
@@ -61,6 +61,13 @@ function calcXandY(pos_x, pos_y, radius, radians) {
     let arc_y_end = (Math.cos(radians) * 10000) + pos_y;
 
     return [arc_x, arc_y, arc_x_end, arc_y_end]
+}
+
+function calcXandYLite(pos_x, pos_y, radius, radians) {
+    let arc_x = (Math.sin(radians) * radius) + pos_x;
+    let arc_y = (Math.cos(radians) * radius) + pos_y;
+
+    return [arc_x, arc_y]
 }
 
 function calcDotXandY(pos_x, pos_y, radius, radians) {
@@ -93,19 +100,11 @@ function animate() {
     
     while (i < num_lines) {
         line_radians = i * each_line_degree;
-        pos_info = calcXandY(pos_x, pos_y, radius, line_radians);
+        pos_info = calcXandYLite(pos_x, pos_y, radius, line_radians);
         start_line_x = pos_info[0];
         start_line_y = pos_info[1];
-        end_line_x = pos_info[2];
-        end_line_y = pos_info[3];
-        ctx.strokeStyle = line_color;
-        ctx.beginPath();
-        ctx.moveTo(start_line_x, start_line_y);
-        ctx.lineTo(end_line_x, end_line_y);
-        ctx.stroke();
-        i += 1;
     
-        while (j < num_dot_lines) {
+        while (j <= num_dot_lines) {
             line_dot_radians = (j * (each_dot_line_degree)) + line_radians - (Math.PI/2);
             dot_pos_info = calcDotXandY(start_line_x, start_line_y, radius, line_dot_radians);
             end_line_x = dot_pos_info[2];
@@ -120,6 +119,22 @@ function animate() {
             j += 1;
         }
         j = 0;
+        i += 1;
+    }
+    i = 0;
+    while (i < num_lines) {
+        line_radians = i * each_line_degree;
+        pos_info = calcXandY(pos_x, pos_y, radius, line_radians);
+        start_line_x = pos_info[0];
+        start_line_y = pos_info[1];
+        end_line_x = pos_info[2];
+        end_line_y = pos_info[3];
+        ctx.strokeStyle = line_color;
+        ctx.beginPath();
+        ctx.moveTo(start_line_x, start_line_y);
+        ctx.lineTo(end_line_x, end_line_y);
+        ctx.stroke();  
+        i += 1;
     }
     ctx.strokeStyle = circle_line_color;
     ctx.fillStyle = circle_color;
