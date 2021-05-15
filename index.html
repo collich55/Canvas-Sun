@@ -14,29 +14,34 @@
         }
 
         .add-line {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            margin: 50px;
+            /* position: absolute; */
+           
             border-radius: 2px;
-            background-color: green;
-            border: 2px solid #ccc;
+            background-color: grey
+        
         }
 
         .subtract-line {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            margin: 100px;
+        
+       
             border-radius: 2px;
-            background-color: green;
-            border: 2px solid #ccc;
+            background-color: grey
+           
+        }
+
+        .buttons {
+            margin: 100px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
         }
     </style>
 </head>
 <body>
-    <button class="add-line" onclick="addLine()">Add Line</button>
-    <button class="subtract-line" onclick="subtractLine()">Subtract Line</button>
+    <div class="buttons">
+        <button class="add-line" onclick="addLine()">Add Line</button>
+        <button class="subtract-line" onclick="subtractLine()">Subtract Line</button>
+    </div>
     <canvas></canvas>
     <script src='canvas.js' ></script>
 </body>

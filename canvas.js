@@ -90,7 +90,7 @@ let item = document.querySelector(".add-line");
 
         e.preventDefault();
 
-        console.log("Pressing!");
+        // console.log("Pressing!");
     }
 
     function notPressingDown(e) {
@@ -98,14 +98,14 @@ let item = document.querySelector(".add-line");
         cancelAnimationFrame(timerID);
         counter = 0;
 
-        console.log("Not pressing!");
+        // console.log("Not pressing!");
     }
 
     //
     // Runs at 60fps when you are pressing down
     //
     function timer() {
-        console.log("Timer tick!");
+        // console.log("Timer tick!");
 
         timerID = requestAnimationFrame(timer);
         counter++;
@@ -117,7 +117,7 @@ let item = document.querySelector(".add-line");
     
 
     // function doSomething(e) {
-    //   console.log("pressHold event fired!");
+    //   // console.log("pressHold event fired!");
     //   num_lines++
     // }
 
@@ -154,7 +154,7 @@ function pressingDown2(e) {
 
     e.preventDefault();
 
-    console.log("Pressing!");
+    // console.log("Pressing!");
 }
 
 function notPressingDown2(e) {
@@ -162,14 +162,14 @@ function notPressingDown2(e) {
     cancelAnimationFrame(timerID2);
     counter2 = 0;
 
-    console.log("Not pressing!");
+    // console.log("Not pressing!");
 }
 
 //
 // Runs at 60fps when you are pressing down
 //
 function timer2() {
-    console.log("Timer tick!");
+    // console.log("Timer tick!");
 
     timerID2 = requestAnimationFrame(timer2);
     counter2++;
