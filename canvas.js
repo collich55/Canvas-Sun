@@ -16,6 +16,7 @@ circle_color_el = document.querySelector('.circle-color');
 circle_line_color_el = document.querySelector('.circle-line-color');
 line_color_el = document.querySelector('.line-color');
 dot_line_color_el = document.querySelector('.dot-line-color');
+background_color_el = document.querySelector('.background-color');
 
 buttons_opacity = true;
 
@@ -38,6 +39,7 @@ circle_color = circle_color_el.value
 circle_line_color = circle_line_color_el.value
 line_color = line_color_el.value
 dot_line_color = dot_line_color_el.value
+background_color = background_color_el.value
 
 let radius = radius_el.value;
 let num_lines = num_lines_el.value;
@@ -85,6 +87,9 @@ let j = 0;
 function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, innerWidth, innerHeight);
+    background_color = background_color_el.value
+    ctx.fillStyle = background_color;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     // num_lines += 1;
     num_lines = num_lines_el.value;
     num_dot_lines = num_dot_lines_el.value;
@@ -93,6 +98,7 @@ function animate() {
     circle_line_color = circle_line_color_el.value
     line_color = line_color_el.value
     dot_line_color = dot_line_color_el.value
+    
 
     each_line_degree = total/num_lines;
     each_dot_line_degree = (dot_total / num_dot_lines)/2;
@@ -142,6 +148,7 @@ function animate() {
     ctx.arc(pos_x, pos_y, radius, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
+
 
     i = 0
 }
