@@ -12,7 +12,7 @@ ctx.beginPath();
 ctx.arc(pos_x, pos_y, radius, 0, 2 * Math.PI);
 ctx.stroke();
 
-let num_lines = 1;
+let num_lines = 10;
 
 let total = 2 * Math.PI;
 
@@ -31,18 +31,15 @@ function calcXandY(pos_x, pos_y, radius, radians) {
     let arc_x_end = (Math.sin(radians) * 1000) + pos_x;
     let arc_y_end = (Math.cos(radians) * 1000) + pos_y;
 
-
-
     return [arc_x, arc_y, arc_x_end, arc_y_end]
+}
 
+function addLine() {
+    num_lines += 1;
+}
 
-
-
-
-
-
-
-
+function subtractLine() {
+    num_lines -= 1;
 }
 
 let i = 0
@@ -50,7 +47,7 @@ let i = 0
 function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, innerWidth, innerHeight);
-    num_lines += 1;
+    // num_lines += 1;
     each_line_degree = total/num_lines;
     
     while (i < num_lines) {
