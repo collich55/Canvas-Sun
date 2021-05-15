@@ -35,8 +35,8 @@
     </style>
 </head>
 <body>
-    <button class="add-line" onclick="addLine()">Add Line</button>
-    <button class="subtract-line" onclick="subtractLine()">Subtract Line</button>
+    <button class="add-line" onmousedown="start()" onmouseup="end()" onclick="addLine()">Add Line</button>
+    <button class="subtract-line" onmousedown="start()" onmouseup="end()" onclick="subtractLine()">Subtract Line</button>
     <canvas></canvas>
     <script src='canvas.js' ></script>
 </body>

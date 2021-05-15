@@ -42,6 +42,165 @@ function subtractLine() {
     num_lines -= 1;
 }
 
+
+
+
+// ########
+
+let item = document.querySelector(".add-line");
+
+    let timerID;
+    let counter = 0;
+
+    let pressHoldEvent = new CustomEvent("pressHold");
+
+    // Increase or decreae value to adjust how long
+    // one should keep pressing down before the pressHold
+    // event fires
+    let pressHoldDuration = 50;
+
+    // Listening for the mouse and touch events    
+    item.addEventListener("mousedown", pressingDown, false);
+    item.addEventListener("mouseup", notPressingDown, false);
+    item.addEventListener("mouseleave", notPressingDown, false);
+
+    item.addEventListener("touchstart", pressingDown, false);
+    item.addEventListener("touchend", notPressingDown, false);
+
+    // Listening for our custom pressHold event
+    // item.addEventListener("pressHold", doSomething, false);
+
+    function pressingDown(e) {
+      // Start the timer
+        requestAnimationFrame(timer);
+
+        e.preventDefault();
+
+        console.log("Pressing!");
+    }
+
+    function notPressingDown(e) {
+      // Stop the timer
+        cancelAnimationFrame(timerID);
+        counter = 0;
+
+        console.log("Not pressing!");
+    }
+
+    //
+    // Runs at 60fps when you are pressing down
+    //
+    function timer() {
+        console.log("Timer tick!");
+
+        timerID = requestAnimationFrame(timer);
+        counter++;
+        num_lines++
+    }
+
+    //   if (counter < pressHoldDuration) {
+    //     timerID = requestAnimationFrame(timer);
+    //     counter++;
+    //     num_lines++
+    //   } else {
+    //     console.log("Press threshold reached!");
+    //     item.dispatchEvent(pressHoldEvent);
+    //   }
+    
+
+    // function doSomething(e) {
+    //   console.log("pressHold event fired!");
+    //   num_lines++
+    // }
+
+// ########
+
+// ########
+
+let item2 = document.querySelector(".subtract-line");
+
+let timerID2;
+let counter2 = 0;
+
+let pressHoldEvent2 = new CustomEvent("pressHold2");
+
+// Increase or decreae value to adjust how long
+// one should keep pressing down before the pressHold
+// event fires
+let pressHoldDuration2 = 50;
+
+// Listening for the mouse and touch events    
+item2.addEventListener("mousedown", pressingDown2, false);
+item2.addEventListener("mouseup", notPressingDown2, false);
+item2.addEventListener("mouseleave", notPressingDown2, false);
+
+item2.addEventListener("touchstart", pressingDown2, false);
+item2.addEventListener("touchend", notPressingDown2, false);
+
+// Listening for our custom pressHold event
+// item2.addEventListener("pressHold2", doSomething2, false);
+
+function pressingDown2(e) {
+    // Start the timer
+    requestAnimationFrame(timer2);
+
+    e.preventDefault();
+
+    console.log("Pressing!");
+}
+
+function notPressingDown2(e) {
+    // Stop the timer
+    cancelAnimationFrame(timerID2);
+    counter2 = 0;
+
+    console.log("Not pressing!");
+}
+
+//
+// Runs at 60fps when you are pressing down
+//
+function timer2() {
+    console.log("Timer tick!");
+    timerID2 = requestAnimationFrame(timer2);
+    counter2++;
+    num_lines--
+
+    // if (counter2 < pressHoldDuration2) {
+    //     timerID2 = requestAnimationFrame(timer);
+    //     counter2++;
+    //     num_lines--
+    // } else {
+    //     console.log("Press threshold reached!");
+    //     item2.dispatchEvent(pressHoldEvent);
+    // }
+}
+
+// function doSomething2(e) {
+//     console.log("pressHold event fired!");
+//     num_lines--
+// }
+
+// ########
+
+// var wrapper = document.getElementById('counter');
+// var counter;
+// var count = 0;
+
+function start(e) {
+    // counter = setInterval(function () {
+    //     // wrapper.innerHTML = count;
+    //     // count++;
+    //     num_lines += 1
+
+    // }, 500);
+    num_lines += 1
+    console.log(e)
+}
+function end() {
+    clearInterval(num_lines)
+}
+
 let i = 0
 
 function animate() {
