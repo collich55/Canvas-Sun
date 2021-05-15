@@ -12,6 +12,10 @@ num_lines_el = document.querySelector('.num-lines');
 num_dot_lines_el = document.querySelector('.num-dot-lines');
 radius_el = document.querySelector('.radius');
 buttons = document.querySelector('.buttons');
+circle_color_el = document.querySelector('.circle-color');
+circle_line_color_el = document.querySelector('.circle-line-color');
+line_color_el = document.querySelector('.line-color');
+dot_line_color_el = document.querySelector('.dot-line-color');
 
 buttons_opacity = true;
 
@@ -30,6 +34,10 @@ document.addEventListener("keypress", function (event) {
 radius_el.value = 40
 num_lines_el.value = 3;
 num_dot_lines_el.value = 6;
+circle_color = circle_color_el.value
+circle_line_color = circle_line_color_el.value
+line_color = line_color_el.value
+dot_line_color = dot_line_color_el.value
 
 let radius = radius_el.value;
 let num_lines = num_lines_el.value;
@@ -74,7 +82,10 @@ function animate() {
     num_lines = num_lines_el.value;
     num_dot_lines = num_dot_lines_el.value;
     radius = radius_el.value;
-
+    circle_color = circle_color_el.value
+    circle_line_color = circle_line_color_el.value
+    line_color = line_color_el.value
+    dot_line_color = dot_line_color_el.value
 
     each_line_degree = total/num_lines;
     each_dot_line_degree = (dot_total / num_dot_lines)/2;
@@ -87,6 +98,7 @@ function animate() {
         start_line_y = pos_info[1];
         end_line_x = pos_info[2];
         end_line_y = pos_info[3];
+        ctx.strokeStyle = line_color;
         ctx.beginPath();
         ctx.moveTo(start_line_x, start_line_y);
         ctx.lineTo(end_line_x, end_line_y);
@@ -98,17 +110,24 @@ function animate() {
             dot_pos_info = calcDotXandY(start_line_x, start_line_y, radius, line_dot_radians);
             end_line_x = dot_pos_info[2];
             end_line_y = dot_pos_info[3];
-            ctx.beginPath();
-            ctx.moveTo(start_line_x, start_line_y);
-            ctx.lineTo(end_line_x, end_line_y);
-            ctx.stroke();
+            ctx.strokeStyle = dot_line_color;
+            if (line_radians != line_dot_radians) {
+                ctx.beginPath();
+                ctx.moveTo(start_line_x, start_line_y);
+                ctx.lineTo(end_line_x, end_line_y);
+                ctx.stroke();
+            }
             j += 1;
         }
         j = 0;
     }
+    ctx.strokeStyle = circle_line_color;
+    ctx.fillStyle = circle_color;
     ctx.beginPath();
     ctx.arc(pos_x, pos_y, radius, 0, 2 * Math.PI);
+    ctx.fill();
     ctx.stroke();
+
     i = 0
 }
 
