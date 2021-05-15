@@ -39,7 +39,9 @@ function addLine() {
 }
 
 function subtractLine() {
-    num_lines -= 1;
+    if (num_lines > 0) {
+        num_lines -= 1;
+    }
 }
 
 
@@ -95,17 +97,11 @@ let item = document.querySelector(".add-line");
 
         timerID = requestAnimationFrame(timer);
         counter++;
-        num_lines++
+        if (counter > pressHoldDuration) {  
+            num_lines++
+        }
     }
 
-    //   if (counter < pressHoldDuration) {
-    //     timerID = requestAnimationFrame(timer);
-    //     counter++;
-    //     num_lines++
-    //   } else {
-    //     console.log("Press threshold reached!");
-    //     item.dispatchEvent(pressHoldEvent);
-    //   }
     
 
     // function doSomething(e) {
@@ -162,43 +158,12 @@ function notPressingDown2(e) {
 //
 function timer2() {
     console.log("Timer tick!");
+
     timerID2 = requestAnimationFrame(timer2);
     counter2++;
-    num_lines--
-
-    // if (counter2 < pressHoldDuration2) {
-    //     timerID2 = requestAnimationFrame(timer);
-    //     counter2++;
-    //     num_lines--
-    // } else {
-    //     console.log("Press threshold reached!");
-    //     item2.dispatchEvent(pressHoldEvent);
-    // }
-}
-
-// function doSomething2(e) {
-//     console.log("pressHold event fired!");
-//     num_lines--
-// }
-
-// ########
-
-// var wrapper = document.getElementById('counter');
-// var counter;
-// var count = 0;
-
-function start(e) {
-    // counter = setInterval(function () {
-    //     // wrapper.innerHTML = count;
-    //     // count++;
-    //     num_lines += 1
-
-    // }, 500);
-    num_lines += 1
-    console.log(e)
-}
-function end() {
-    clearInterval(num_lines)
+    if (counter2 > pressHoldDuration2 && num_lines > 0) {
+        num_lines--
+    }
 }
 
 let i = 0
