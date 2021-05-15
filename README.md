@@ -5,5 +5,5 @@ This project convinced me that html canvas is perhaps the most fun use of trigon
 
 link: https://collich55.github.io/Canvas-Sun/
 
-the buttons have a useful click and hold functionality.
+
 
