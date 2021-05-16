@@ -40,6 +40,7 @@ circle_line_color = circle_line_color_el.value
 line_color = line_color_el.value
 dot_line_color = dot_line_color_el.value
 background_color = background_color_el.value
+var randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
 let radius = radius_el.value;
 let num_lines = num_lines_el.value;
@@ -79,6 +80,29 @@ function calcDotXandY(pos_x, pos_y, radius, radians) {
     let arc_y_end = (Math.cos(radians) * 10000) + pos_y;
 
     return [arc_x, arc_y, arc_x_end, arc_y_end]
+}
+
+function randomizeParams() {
+    
+    radius_el.value = Math.floor(Math.random() * 50) + 2;
+    num_lines_el.value = Math.floor(Math.random() * 100) + 5;
+    num_dot_lines_el.value = Math.floor(Math.random() * 50) + 2;
+
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + randomColor;
+    circle_color_el.value = randomColor;
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + randomColor;
+    circle_line_color_el.value = randomColor;
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + randomColor;
+    line_color_el.value = randomColor;
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + randomColor;
+    dot_line_color_el.value = randomColor;
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + randomColor;
+    background_color_el.value = randomColor;
 }
 
 
