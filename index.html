@@ -38,6 +38,11 @@
         input {
             font-family: 'Open Sans', sans-serif;
         }
+        
+        p {
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
 
         .buttons {
             margin: 100px;
@@ -56,6 +61,7 @@
         .links {
             display: flex;
             justify-content: space-around;
+            margin-top: 10px;
             
         }
 
@@ -89,6 +95,7 @@
         <label for="background-color">Background Color</label>
         <input class="background-color" type="color" value="#ffffff">
         <button onclick="randomizeParams()" >Randomize</button>
+        <p>Press r to randomize parameters</p>
         <p>Press h to hide inputs</p>
         <div class="links">
             <a target="_blank" rel="noopener noreferrer" id="linked" rel="stylesheet"
