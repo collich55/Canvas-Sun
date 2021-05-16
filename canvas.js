@@ -32,11 +32,14 @@ document.addEventListener("keypress", function (event) {
     }
 })
 
+// hmmm
+
 document.addEventListener("keypress", function (event) {
     if (event.key == 'r') {
         randomizeParams();
     }
 })
+
 
 radius_el.value = 40
 num_lines_el.value = 1;
