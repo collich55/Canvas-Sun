@@ -52,6 +52,13 @@
             color: rgb(170, 0, 0);
             font-family: 'Open Sans', sans-serif;
         }
+
+        .links {
+            display: flex;
+            justify-content: space-around;
+            
+        }
+
         button {
             border-radius: 4px;
             font-family: 'Open Sans', sans-serif;
@@ -83,6 +90,15 @@
         <input class="background-color" type="color" value="#ffffff">
         <button onclick="randomizeParams()" >Randomize</button>
         <p>Press h to hide inputs</p>
+        <div class="links">
+            <a target="_blank" rel="noopener noreferrer" id="linked" rel="stylesheet"
+                href="https://www.linkedin.com/in/anthony-collichio-451b11103/">
+                <img alt="icon" src="LI-In-Bug.png" width=40 height="40">
+            </a>
+            <a target="_blank" rel="noopener noreferrer" id="github" rel="stylesheet" href="https://github.com/collich55/Canvas-Sun">
+                <img alt="icon" src="Git-Icon-1788C.png" width=40 height="40">
+            </a>
+        </div>
     </div>
     <canvas></canvas>
     <script src='canvas.js' ></script>
