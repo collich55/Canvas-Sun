@@ -85,7 +85,7 @@ function calcDotXandY(pos_x, pos_y, radius, radians) {
 function randomizeParams() {
     
     radius_el.value = Math.floor(Math.random() * 50) + 2;
-    num_lines_el.value = Math.floor(Math.random() * 100) + 5;
+    num_lines_el.value = Math.floor(Math.random() * 100) + 3;
     num_dot_lines_el.value = Math.floor(Math.random() * 50) + 2;
 
     randomColor = Math.floor(Math.random() * 16777215).toString(16);
