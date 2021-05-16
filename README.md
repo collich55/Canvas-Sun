@@ -5,5 +5,7 @@ This project convinced me that html canvas is perhaps the most fun use of trigon
 
 link: https://collich55.github.io/Canvas-Sun/
 
+<img width="1440" alt="preview-photo" src="https://user-images.githubusercontent.com/62472030/118384815-35caa080-b5d7-11eb-9019-b24cc1a0248b.png">
+
 
 
