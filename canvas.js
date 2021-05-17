@@ -140,7 +140,6 @@ function returnRandomizeParams() {
     randomColor = Math.floor(Math.random() * 16777215).toString(16);
     randomColor = '#' + randomColor;
     new_background_color = randomColor;
-    console.log(new_radius)
     return [new_radius, new_num_lines, new_num_dot_lines, new_circle_color, new_circle_line_color, new_line_color, new_dot_line_color, new_background_color]
 }
 
@@ -167,10 +166,14 @@ function graduallyChangeParams() {
     now = Date.now();
     elapsed = now - then;
 
+    
+
     if (
         radius_el.value != new_params[0] ||
         num_lines_el.value != new_params[1] ||
-        num_dot_lines_el.value != new_params[2]
+        num_dot_lines_el.value != new_params[2] ||
+        circle_color_el.value !== new_params[3]
+
         ) {
         myReq = requestAnimationFrame(graduallyChangeParams);
     } else {
@@ -203,6 +206,42 @@ function graduallyChangeParams() {
         if (num_lines_el.value < new_params[2]) {
             num_dot_lines_el.value++
         }
+
+        if (circle_color_el.value !== new_params[3]) {
+
+            circle_color_num = circle_color_el.value.slice(1)
+            new_circle_color_num = new_params[3].slice(1)
+
+            circle_color_num = parseInt(circle_color_num,16);
+            new_circle_color_num = parseInt(new_circle_color_num, 16);
+
+            console.log([
+                circle_color_el.value,
+                new_params[3],
+                circle_color_num,
+                new_circle_color_num
+            ])
+            
+            if (circle_color_num < new_circle_color_num) {
+                circle_color_num++;
+                circle_color_num = circle_color_num.toString(16);
+                circle_color_num = '#' + circle_color_num;
+                circle_color_el.value = circle_color_num;
+
+            }
+
+            if (circle_color_num > new_circle_color_num) {
+                circle_color_num -= 1;
+                circle_color_num = circle_color_num.toString(16);
+                circle_color_num = '#' + circle_color_num;
+                circle_color_el.value = circle_color_num;
+
+            }
+        }
+
+
+
+
 
 
 
