@@ -168,7 +168,10 @@ function graduallyChangeParams() {
     elapsed = now - then;
 
     if (
-        radius_el.value != new_params[0]) {
+        radius_el.value != new_params[0] ||
+        num_lines_el.value != new_params[1] ||
+        num_dot_lines_el.value != new_params[2]
+        ) {
         myReq = requestAnimationFrame(graduallyChangeParams);
     } else {
         cancelAnimationFrame(myReq);
@@ -184,6 +187,24 @@ function graduallyChangeParams() {
         if (radius_el.value < new_params[0]) {
             radius_el.value++ 
         }
+
+        if (num_lines_el.value > new_params[1]) {
+            num_lines_el.value -= 1
+        }
+        
+        if (num_lines_el.value < new_params[1]) {
+            num_lines_el.value++
+        }
+
+        if (num_dot_lines_el.value > new_params[2]) {
+            num_dot_lines_el.value -= 1
+        }
+
+        if (num_lines_el.value < new_params[2]) {
+            num_dot_lines_el.value++
+        }
+
+
 
 
 
