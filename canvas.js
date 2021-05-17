@@ -41,7 +41,7 @@ document.addEventListener("keypress", function (event) {
 document.addEventListener("keypress", function (event) {
     if (event.key == 'a') {
         new_params = returnRandomizeParams();
-        startGraduallyChangeParams(10);
+        startGraduallyChangeParams(30);
     }
 })
 
@@ -167,7 +167,8 @@ function graduallyChangeParams() {
     now = Date.now();
     elapsed = now - then;
 
-    if (radius_el.value != new_params[0]) {
+    if (
+        radius_el.value != new_params[0]) {
         myReq = requestAnimationFrame(graduallyChangeParams);
     } else {
         cancelAnimationFrame(myReq);
@@ -180,38 +181,40 @@ function graduallyChangeParams() {
             radius_el.value -= 1
         }
         
-        // if (radius_el.value < new_params[0]) {
-        //     radius_el.value += 1    
-        // }
+        if (radius_el.value < new_params[0]) {
+            radius_el.value++ 
+        }
+
+
 
     } else {
         cancelAnimationFrame(myReq);
     }
 }
 
-function animate() {
+// function animate() {
 
-    // request another frame
+//     // request another frame
 
-    requestAnimationFrame(animate);
+//     requestAnimationFrame(animate);
 
-    // calc elapsed time since last loop
+//     // calc elapsed time since last loop
 
-    now = Date.now();
-    elapsed = now - then;
+//     now = Date.now();
+//     elapsed = now - then;
 
-    // if enough time has elapsed, draw the next frame
+//     // if enough time has elapsed, draw the next frame
 
-    if (elapsed > fpsInterval) {
+//     if (elapsed > fpsInterval) {
 
-        // Get ready for next frame by setting then=now, but also adjust for your
-        // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
-        then = now - (elapsed % fpsInterval);
+//         // Get ready for next frame by setting then=now, but also adjust for your
+//         // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
+//         then = now - (elapsed % fpsInterval);
 
-        // Put your drawing code here
+//         // Put your drawing code here
 
-    }
-}
+//     }
+// }
 
 
 let i = 0;
@@ -222,7 +225,6 @@ function animate() {
     background_color = background_color_el.value
     ctx.fillStyle = background_color;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    // num_lines += 1;
     num_lines = num_lines_el.value;
     num_dot_lines = num_dot_lines_el.value;
     // radius = radius_el.value;
