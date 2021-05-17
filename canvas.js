@@ -10,7 +10,7 @@ let ctx = canvas.getContext('2d');
 canvas = document.querySelector('canvas');
 num_lines_el = document.querySelector('.num-lines');
 num_dot_lines_el = document.querySelector('.num-dot-lines');
-radius_el = document.querySelector('.radius');
+let radius_el = document.querySelector('.radius');
 buttons = document.querySelector('.buttons');
 circle_color_el = document.querySelector('.circle-color');
 circle_line_color_el = document.querySelector('.circle-line-color');
@@ -38,6 +38,13 @@ document.addEventListener("keypress", function (event) {
     }
 })
 
+document.addEventListener("keypress", function (event) {
+    if (event.key == 'a') {
+        new_params = returnRandomizeParams();
+        startGraduallyChangeParams(10);
+    }
+})
+
 
 radius_el.value = 40
 num_lines_el.value = 1;
@@ -49,7 +56,7 @@ dot_line_color = dot_line_color_el.value
 background_color = background_color_el.value
 var randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
-let radius = radius_el.value;
+// let radius = radius_el.value;
 let num_lines = num_lines_el.value;
 let num_dot_lines = num_dot_lines_el.value;
 
@@ -112,6 +119,100 @@ function randomizeParams() {
     background_color_el.value = randomColor;
 }
 
+function returnRandomizeParams() {
+
+    new_radius = Math.floor(Math.random() * 50) + 2;
+    new_num_lines = Math.floor(Math.random() * 100) + 3;
+    new_num_dot_lines = Math.floor(Math.random() * 50) + 2;
+
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + randomColor;
+    new_circle_color = randomColor;
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + randomColor;
+    new_circle_line_color = randomColor;
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + randomColor;
+    new_line_color = randomColor;
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + randomColor;
+    new_dot_line_color = randomColor;
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = '#' + randomColor;
+    new_background_color = randomColor;
+    console.log(new_radius)
+    return [new_radius, new_num_lines, new_num_dot_lines, new_circle_color, new_circle_line_color, new_line_color, new_dot_line_color, new_background_color]
+}
+
+let new_params = returnRandomizeParams();
+
+var stop = false;
+var frameCount = 0;
+var fps, fpsInterval, startTime, now, then, elapsed;
+
+
+// initialize the timer variables and start the animation
+
+function startGraduallyChangeParams(fps) {
+    fpsInterval = 1000 / fps;
+    then = Date.now();
+    startTime = then;
+
+    graduallyChangeParams();
+}
+
+function graduallyChangeParams() {
+    myReq = requestAnimationFrame(graduallyChangeParams);
+
+    now = Date.now();
+    elapsed = now - then;
+
+    if (radius_el.value != new_params[0]) {
+        myReq = requestAnimationFrame(graduallyChangeParams);
+    } else {
+        cancelAnimationFrame(myReq);
+    }
+
+    if (elapsed > fpsInterval) {
+        then = now - (elapsed % fpsInterval);
+
+        if (radius_el.value > new_params[0]) {
+            radius_el.value -= 1
+        }
+        
+        // if (radius_el.value < new_params[0]) {
+        //     radius_el.value += 1    
+        // }
+
+    } else {
+        cancelAnimationFrame(myReq);
+    }
+}
+
+function animate() {
+
+    // request another frame
+
+    requestAnimationFrame(animate);
+
+    // calc elapsed time since last loop
+
+    now = Date.now();
+    elapsed = now - then;
+
+    // if enough time has elapsed, draw the next frame
+
+    if (elapsed > fpsInterval) {
+
+        // Get ready for next frame by setting then=now, but also adjust for your
+        // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
+        then = now - (elapsed % fpsInterval);
+
+        // Put your drawing code here
+
+    }
+}
+
 
 let i = 0;
 let j = 0;
@@ -124,7 +225,7 @@ function animate() {
     // num_lines += 1;
     num_lines = num_lines_el.value;
     num_dot_lines = num_dot_lines_el.value;
-    radius = radius_el.value;
+    // radius = radius_el.value;
     circle_color = circle_color_el.value
     circle_line_color = circle_line_color_el.value
     line_color = line_color_el.value
@@ -137,13 +238,13 @@ function animate() {
     
     while (i < num_lines) {
         line_radians = i * each_line_degree;
-        pos_info = calcXandYLite(pos_x, pos_y, radius, line_radians);
+        pos_info = calcXandYLite(pos_x, pos_y, radius_el.value, line_radians);
         start_line_x = pos_info[0];
         start_line_y = pos_info[1];
     
         while (j <= num_dot_lines) {
             line_dot_radians = (j * (each_dot_line_degree)) + line_radians - (Math.PI/2);
-            dot_pos_info = calcDotXandY(start_line_x, start_line_y, radius, line_dot_radians);
+            dot_pos_info = calcDotXandY(start_line_x, start_line_y, radius_el.value, line_dot_radians);
             end_line_x = dot_pos_info[2];
             end_line_y = dot_pos_info[3];
             ctx.strokeStyle = dot_line_color;
@@ -161,7 +262,7 @@ function animate() {
     i = 0;
     while (i < num_lines) {
         line_radians = i * each_line_degree;
-        pos_info = calcXandY(pos_x, pos_y, radius, line_radians);
+        pos_info = calcXandY(pos_x, pos_y, radius_el.value, line_radians);
         start_line_x = pos_info[0];
         start_line_y = pos_info[1];
         end_line_x = pos_info[2];
@@ -176,7 +277,7 @@ function animate() {
     ctx.strokeStyle = circle_line_color;
     ctx.fillStyle = circle_color;
     ctx.beginPath();
-    ctx.arc(pos_x, pos_y, radius, 0, 2 * Math.PI);
+    ctx.arc(pos_x, pos_y, radius_el.value, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
 
