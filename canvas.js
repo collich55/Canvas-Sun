@@ -38,10 +38,15 @@ document.addEventListener("keypress", function (event) {
     }
 })
 
+let a_key_down = false;
+
 document.addEventListener("keypress", function (event) {
     if (event.key == 'a') {
+        a_key_down = !a_key_down;
+        // if (a_key_down) {
         new_params = returnRandomizeParams();
         startGraduallyChangeParams(30);
+        // }
     }
 })
 
@@ -156,8 +161,12 @@ function startGraduallyChangeParams(fps) {
     fpsInterval = 1000 / fps;
     then = Date.now();
     startTime = then;
-
     graduallyChangeParams();
+}
+
+function setCharAt(str, index, chr) {
+    if (index > str.length - 1) return str;
+    return str.substring(0, index) + chr + str.substring(index + 1);
 }
 
 function graduallyChangeParams() {
@@ -171,13 +180,14 @@ function graduallyChangeParams() {
     if (
         radius_el.value != new_params[0] ||
         num_lines_el.value != new_params[1] ||
-        num_dot_lines_el.value != new_params[2] ||
-        circle_color_el.value !== new_params[3]
+        num_dot_lines_el.value != new_params[2]
+        // circle_color_el.value !== new_params[3]
 
         ) {
         myReq = requestAnimationFrame(graduallyChangeParams);
     } else {
         cancelAnimationFrame(myReq);
+        // new_params = returnRandomizeParams();
     }
 
     if (elapsed > fpsInterval) {
@@ -206,49 +216,57 @@ function graduallyChangeParams() {
         if (num_lines_el.value < new_params[2]) {
             num_dot_lines_el.value++
         }
+        // color code
+        // if (circle_color_el.value !== new_params[3]) {
 
-        if (circle_color_el.value !== new_params[3]) {
+        //     hex = '0123456789abcdef'
 
-            circle_color_num = circle_color_el.value.slice(1)
-            new_circle_color_num = new_params[3].slice(1)
+        //     // circle_color_string = circle_color_el.value.slice(1)
+        //     // new_circle_color_string = new_params[3].slice(1)
 
-            circle_color_num = parseInt(circle_color_num,16);
-            new_circle_color_num = parseInt(new_circle_color_num, 16);
+        //     // circle_color_num = parseInt(circle_color_num,16);
+        //     // new_circle_color_num = parseInt(new_circle_color_num, 16);
 
-            console.log([
-                circle_color_el.value,
-                new_params[3],
-                circle_color_num,
-                new_circle_color_num
-            ])
+        //     console.log([
+        //         circle_color_el.value,
+        //         new_params[3],
+        //         circle_color_num,
+        //         new_circle_color_num
+        //     ])
+
+        //     for (i = 1; i < 7; i++) {
+
+        //         cur_idx = hex.indexOf(circle_color_el.value[i])
+        //         new_idx = hex.indexOf(new_params[3][i])
+
+        //         if (cur_idx < new_idx ){
+        //             setCharAt(circle_color_el.value, cur, chr)
+        //         } else if (hex.indexOf(circle_color_el.value[i]) < hex.indexOf(new_params[3][i]))
+        //     }
             
-            if (circle_color_num < new_circle_color_num) {
-                circle_color_num++;
-                circle_color_num = circle_color_num.toString(16);
-                circle_color_num = '#' + circle_color_num;
-                circle_color_el.value = circle_color_num;
+        //     if (circle_color_num < new_circle_color_num) {
+        //         circle_color_num++;
+        //         circle_color_num = circle_color_num.toString(16);
+        //         circle_color_num = '#' + circle_color_num;
+        //         circle_color_el.value = circle_color_num;
 
-            }
+        //     }
 
-            if (circle_color_num > new_circle_color_num) {
-                circle_color_num -= 1;
-                circle_color_num = circle_color_num.toString(16);
-                circle_color_num = '#' + circle_color_num;
-                circle_color_el.value = circle_color_num;
+        //     if (circle_color_num > new_circle_color_num) {
+        //         circle_color_num -= 1;
+        //         circle_color_num = circle_color_num.toString(16);
+        //         circle_color_num = '#' + circle_color_num;
+        //         circle_color_el.value = circle_color_num;
 
-            }
-        }
-
-
+        //     }
+       // }
 
 
-
-
-
-
-
-    } else {
+    } 
+    
+    else {
         cancelAnimationFrame(myReq);
+        // new_params = returnRandomizeParams();
     }
 }
 
