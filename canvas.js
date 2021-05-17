@@ -32,8 +32,6 @@ document.addEventListener("keypress", function (event) {
     }
 })
 
-// hmmm
-
 document.addEventListener("keypress", function (event) {
     if (event.key == 'r') {
         randomizeParams();
