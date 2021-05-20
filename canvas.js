@@ -8,8 +8,8 @@ let pos_y = window.innerHeight/2;
 let ctx = canvas.getContext('2d');
 
 canvas = document.querySelector('canvas');
-num_lines_el = document.querySelector('.num-lines');
-num_dot_lines_el = document.querySelector('.num-dot-lines');
+let num_lines_el = document.querySelector('.num-lines');
+let num_dot_lines_el = document.querySelector('.num-dot-lines');
 let radius_el = document.querySelector('.radius');
 buttons = document.querySelector('.buttons');
 circle_color_el = document.querySelector('.circle-color');
@@ -38,14 +38,12 @@ document.addEventListener("keypress", function (event) {
     }
 })
 
-let a_key_down = false;
 
 document.addEventListener("keypress", function (event) {
     if (event.key == 'a') {
-        a_key_down = !a_key_down;
         // if (a_key_down) {
         new_params = returnRandomizeParams();
-        startGraduallyChangeParams(30);
+        startGraduallyChangeParams(60);
         // }
     }
 })
@@ -169,13 +167,18 @@ function setCharAt(str, index, chr) {
     return str.substring(0, index) + chr + str.substring(index + 1);
 }
 
+let dif = 0
+
 function graduallyChangeParams() {
     myReq = requestAnimationFrame(graduallyChangeParams);
 
+    
+
     now = Date.now();
     elapsed = now - then;
-
     
+
+    // new_params = returnRandomizeParams();
 
     if (
         radius_el.value != new_params[0] ||
@@ -187,36 +190,82 @@ function graduallyChangeParams() {
         myReq = requestAnimationFrame(graduallyChangeParams);
     } else {
         cancelAnimationFrame(myReq);
+        // ("reached good");
         // new_params = returnRandomizeParams();
     }
 
     if (elapsed > fpsInterval) {
         then = now - (elapsed % fpsInterval);
 
-        if (radius_el.value > new_params[0]) {
-            radius_el.value -= 1
-        }
         
-        if (radius_el.value < new_params[0]) {
-            radius_el.value++ 
+
+        if (radius_el.value > new_params[0]) {
+            dif = radius_el.value - new_params[2]
+            if (dif >= 4) {
+                radius_el.value -= Math.floor(dif / 2);
+            } else {
+                radius_el.value -= 1;
+            }
+        } else if (radius_el.value == new_params[0]) {
+            // ("radius done")
+        } else {
+            dif = new_params[0] - radius_el.value;
+            if (dif >= 4) {
+                radius_el.value++;
+                radius_el.value++;
+                radius_el.value++;
+                radius_el.value++;
+            } else {
+                radius_el.value++;
+            }
         }
 
         if (num_lines_el.value > new_params[1]) {
-            num_lines_el.value -= 1
-        }
-        
-        if (num_lines_el.value < new_params[1]) {
-            num_lines_el.value++
+            dif = num_lines_el.value - new_params[1]
+            if (dif >= 4) {
+                num_lines_el.value -= Math.floor(dif / 2);
+            } else {
+                num_lines_el.value -= 1;
+            }
+        } else if (num_lines_el.value == new_params[1]) {
+            // ("main lines done")
+        } else {
+            dif = new_params[1] - num_lines_el.value;
+            if (dif >= 4) {
+                num_lines_el.value++;
+                num_lines_el.value++;
+                num_lines_el.value++;
+                num_lines_el.value++;
+            } else {
+                num_lines_el.value++;
+            }
         }
 
+    
         if (num_dot_lines_el.value > new_params[2]) {
-            num_dot_lines_el.value -= 1
+            dif = num_dot_lines_el.value - new_params[2]
+            if (dif >= 4) {
+                num_dot_lines_el.value -= Math.floor(dif / 2);
+            } else {
+                num_dot_lines_el.value -= 1;
+            }
+        } else if (num_dot_lines_el.value == new_params[2]) {
+            // ("sub lines done")
+        }
+        else {
+            dif = new_params[2] - num_dot_lines_el.value;
+            if (dif >= 4) {
+                num_dot_lines_el.value++;
+                num_dot_lines_el.value++;
+                num_dot_lines_el.value++;
+                num_dot_lines_el.value++;
+            } else {
+                num_dot_lines_el.value++;
+            }
         }
 
-        if (num_lines_el.value < new_params[2]) {
-            num_dot_lines_el.value++
-        }
-        // color code
+       
+        // unfinished color code
         // if (circle_color_el.value !== new_params[3]) {
 
         //     hex = '0123456789abcdef'
@@ -227,7 +276,7 @@ function graduallyChangeParams() {
         //     // circle_color_num = parseInt(circle_color_num,16);
         //     // new_circle_color_num = parseInt(new_circle_color_num, 16);
 
-        //     console.log([
+        //     // ([
         //         circle_color_el.value,
         //         new_params[3],
         //         circle_color_num,
@@ -262,12 +311,26 @@ function graduallyChangeParams() {
        // }
 
 
-    } 
-    
-    else {
+    } else {
         cancelAnimationFrame(myReq);
+      
+        
         // new_params = returnRandomizeParams();
     }
+
+    
+
+
+
+    // if (
+    //     radius_el.value != new_params[0] ||
+    //     num_lines_el.value != new_params[1] ||
+    //     num_dot_lines_el.value != new_params[2]
+    //     // circle_color_el.value !== new_params[3]
+
+    // ) {
+    //     new_params = returnRandomizeParams();
+    // }
 }
 
 // function animate() {
@@ -293,6 +356,22 @@ function graduallyChangeParams() {
 
 //     }
 // }
+
+function drawLine() {
+    ctx.beginPath();
+    ctx.moveTo(start_line_x, start_line_y);
+    ctx.lineTo(end_line_x, end_line_y);
+    ctx.stroke();
+}
+
+function drawCircle() {
+    ctx.strokeStyle = circle_line_color;
+    ctx.fillStyle = circle_color;
+    ctx.beginPath();
+    ctx.arc(pos_x, pos_y, radius_el.value, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.stroke();
+}
 
 
 let i = 0;
@@ -329,10 +408,7 @@ function animate() {
             end_line_y = dot_pos_info[3];
             ctx.strokeStyle = dot_line_color;
             if (line_radians != line_dot_radians) {
-                ctx.beginPath();
-                ctx.moveTo(start_line_x, start_line_y);
-                ctx.lineTo(end_line_x, end_line_y);
-                ctx.stroke();
+                drawLine();
             }
             j += 1;
         }
@@ -348,20 +424,10 @@ function animate() {
         end_line_x = pos_info[2];
         end_line_y = pos_info[3];
         ctx.strokeStyle = line_color;
-        ctx.beginPath();
-        ctx.moveTo(start_line_x, start_line_y);
-        ctx.lineTo(end_line_x, end_line_y);
-        ctx.stroke();  
+        drawLine();
         i += 1;
     }
-    ctx.strokeStyle = circle_line_color;
-    ctx.fillStyle = circle_color;
-    ctx.beginPath();
-    ctx.arc(pos_x, pos_y, radius_el.value, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
-
-
+    drawCircle();
     i = 0
 }
 
