@@ -72,6 +72,12 @@
             background-color: white;
 
         }
+
+        .with_underline {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px darkred solid;
+        }
     </style>
 </head>
 <body>
@@ -84,6 +90,7 @@
         <input class="num-dot-lines" type="number" value=0 min=0>
         <label for="radius">Circle Radius</label>
         <input class="radius" type="number" value=0 min=0>
+        <p class="with_underline">Press a to randomize number parameters</p>
         <label for="circle-color">Circle Color</label>
         <input class="circle-color" type="color" value="#ffffff">
         <label for="circle-line-color">Circle Line Color</label>
@@ -95,7 +102,7 @@
         <label for="background-color">Background Color</label>
         <input class="background-color" type="color" value="#ffffff">
         <button onclick="randomizeParams()" >Randomize</button>
-        <p>Press r to randomize parameters</p>
+        <p>Press r to randomize all parameters</p>
         <p>Press h to hide inputs</p>
         <div class="links">
             <a target="_blank" rel="noopener noreferrer" id="linked" rel="stylesheet"
