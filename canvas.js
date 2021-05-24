@@ -17,6 +17,7 @@ circle_line_color_el = document.querySelector('.circle-line-color');
 line_color_el = document.querySelector('.line-color');
 dot_line_color_el = document.querySelector('.dot-line-color');
 background_color_el = document.querySelector('.background-color');
+let not_changed = true;
 
 buttons_opacity = true;
 
@@ -73,6 +74,8 @@ let start_line_x = 0;
 let start_line_y = 0;
 let end_line_x = 0;
 let end_line_y = 0;
+
+let temp_idx = 0;
 
 function calcXandY(pos_x, pos_y, radius, radians) {
     let arc_x = (Math.sin(radians) * radius) + pos_x;
@@ -228,7 +231,7 @@ function graduallyChangeParams() {
                 num_lines_el.value -= 1;
             }
         } else if (num_lines_el.value == new_params[1]) {
-            // ("main lines done")
+            console.log("main lines done")
         } else {
             dif = new_params[1] - num_lines_el.value;
             if (dif >= 4) {
@@ -264,51 +267,165 @@ function graduallyChangeParams() {
             }
         }
 
-       
-        // unfinished color code
         // if (circle_color_el.value !== new_params[3]) {
 
-        //     hex = '0123456789abcdef'
+        //     circle_color_num = circle_color_el.value.slice(1)
+        //     new_circle_color_num = new_params[3].slice(1)
 
-        //     // circle_color_string = circle_color_el.value.slice(1)
-        //     // new_circle_color_string = new_params[3].slice(1)
+        //     circle_color_num = parseInt(circle_color_num, 16);
+        //     new_circle_color_num = parseInt(new_circle_color_num, 16);
 
-        //     // circle_color_num = parseInt(circle_color_num,16);
-        //     // new_circle_color_num = parseInt(new_circle_color_num, 16);
-
-        //     // ([
+        //     console.log([
         //         circle_color_el.value,
         //         new_params[3],
         //         circle_color_num,
         //         new_circle_color_num
         //     ])
 
-        //     for (i = 1; i < 7; i++) {
-
-        //         cur_idx = hex.indexOf(circle_color_el.value[i])
-        //         new_idx = hex.indexOf(new_params[3][i])
-
-        //         if (cur_idx < new_idx ){
-        //             setCharAt(circle_color_el.value, cur, chr)
-        //         } else if (hex.indexOf(circle_color_el.value[i]) < hex.indexOf(new_params[3][i]))
-        //     }
-            
         //     if (circle_color_num < new_circle_color_num) {
         //         circle_color_num++;
         //         circle_color_num = circle_color_num.toString(16);
         //         circle_color_num = '#' + circle_color_num;
         //         circle_color_el.value = circle_color_num;
-
+                
         //     }
-
+            
         //     if (circle_color_num > new_circle_color_num) {
+        //         dif = new_circle_color_num - circle_color_num;
         //         circle_color_num -= 1;
         //         circle_color_num = circle_color_num.toString(16);
         //         circle_color_num = '#' + circle_color_num;
         //         circle_color_el.value = circle_color_num;
 
         //     }
-       // }
+        // }
+
+       
+        // unfinished color code
+        if (circle_color_el.value !== new_params[3] && circle_color_el.value.length == new_params[3].length) {
+
+            temp_idx = 0
+
+            not_changed = true;
+
+
+            while (not_changed && temp_idx < circle_color_el.value.length) {
+                if (circle_color_el.value[temp_idx] !== new_params[3][temp_idx]){
+                    circle_color_el.value = setCharAt(circle_color_el.value, temp_idx, new_params[3][temp_idx]);
+                    not_changed = false;
+                }
+                temp_idx++
+            }
+        }
+        if (circle_line_color_el.value !== new_params[4] && circle_line_color_el.value.length == new_params[4].length) {
+
+            temp_idx = 0
+
+            not_changed = true;
+
+
+            while (not_changed && temp_idx < circle_line_color_el.value.length) {
+                if (circle_line_color_el.value[temp_idx] !== new_params[4][temp_idx]) {
+                    circle_line_color_el.value = setCharAt(circle_line_color_el.value, temp_idx, new_params[4][temp_idx]);
+                    not_changed = false;
+                }
+                temp_idx++
+            }
+        }
+        if (line_color_el.value !== new_params[5] && line_color_el.value.length == new_params[5].length) {
+
+            temp_idx = 0
+
+            console.log(line_color_el.value);
+            console.log(new_params[5]);
+            not_changed = true;
+
+
+            while (not_changed && temp_idx < line_color_el.value.length) {
+                if (line_color_el.value[temp_idx] !== new_params[5][temp_idx]) {
+                    line_color_el.value = setCharAt(line_color_el.value, temp_idx, new_params[5][temp_idx]);
+                    not_changed = false;
+                }
+                temp_idx++
+            }
+        }
+        if (dot_line_color_el.value !== new_params[6] && dot_line_color_el.value.length == new_params[6].length) {
+
+            temp_idx = 0
+
+            console.log(dot_line_color_el.value);
+            console.log(new_params[6]);
+            not_changed = true;
+
+
+            while (not_changed && temp_idx < dot_line_color_el.value.length) {
+                if (dot_line_color_el.value[temp_idx] !== new_params[6][temp_idx]) {
+                    dot_line_color_el.value = setCharAt(dot_line_color_el.value, temp_idx, new_params[6][temp_idx]);
+                    not_changed = false;
+                }
+                temp_idx++
+            }
+        }
+        if (background_color_el.value !== new_params[7] && background_color_el.value.length == new_params[7].length) {
+
+            temp_idx = 0
+
+            console.log(background_color_el.value);
+            console.log(new_params[7]);
+            not_changed = true;
+
+
+            while (not_changed && temp_idx < background_color_el.value.length) {
+                if (background_color_el.value[temp_idx] !== new_params[7][temp_idx]) {
+                    background_color_el.value = setCharAt(background_color_el.value, temp_idx, new_params[7][temp_idx]);
+                    not_changed = false;
+                }
+                temp_idx++
+            }
+        }
+            
+
+    //         hex = '0123456789abcdef'
+
+    //         // circle_color_string = circle_color_el.value.slice(1)
+    //         // new_circle_color_string = new_params[3].slice(1)
+
+    //         // circle_color_num = parseInt(circle_color_num,16);
+    //         // new_circle_color_num = parseInt(new_circle_color_num, 16);
+
+    //         // ([
+    //         //     circle_color_el.value,
+    //         //     new_params[3],
+    //         //     circle_color_num,
+    //         //     new_circle_color_num
+    //         // ])
+
+    //         for (i = 1; i < 7; i++) {
+
+    //             cur_idx = hex.indexOf(circle_color_el.value[i])
+    //             new_idx = hex.indexOf(new_params[3][i])
+
+    //             if (cur_idx < new_idx ){
+    //                 setCharAt(circle_color_el.value, cur, chr)
+    //             } else if (hex.indexOf(circle_color_el.value[i]) < hex.indexOf(new_params[3][i]))
+    //         }
+            
+    //         if (circle_color_num < new_circle_color_num) {
+    //             circle_color_num++;
+    //             circle_color_num = circle_color_num.toString(16);
+    //             circle_color_num = '#' + circle_color_num;
+    //             circle_color_el.value = circle_color_num;
+
+    //         }
+
+    //         if (circle_color_num > new_circle_color_num) {
+    //             circle_color_num -= 1;
+    //             circle_color_num = circle_color_num.toString(16);
+    //             circle_color_num = '#' + circle_color_num;
+    //             circle_color_el.value = circle_color_num;
+
+    //         }
+       
 
 
     } else {
