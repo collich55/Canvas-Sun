@@ -108,19 +108,19 @@ function randomizeParams() {
     num_lines_el.value = Math.floor(Math.random() * 100) + 3;
     num_dot_lines_el.value = Math.floor(Math.random() * 50) + 2;
 
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     randomColor = '#' + randomColor;
     circle_color_el.value = randomColor;
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     randomColor = '#' + randomColor;
     circle_line_color_el.value = randomColor;
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     randomColor = '#' + randomColor;
     line_color_el.value = randomColor;
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     randomColor = '#' + randomColor;
     dot_line_color_el.value = randomColor;
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     randomColor = '#' + randomColor;
     background_color_el.value = randomColor;
 }
@@ -131,19 +131,19 @@ function returnRandomizeParams() {
     new_num_lines = Math.floor(Math.random() * 100) + 3;
     new_num_dot_lines = Math.floor(Math.random() * 50) + 2;
 
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     randomColor = '#' + randomColor;
     new_circle_color = randomColor;
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     randomColor = '#' + randomColor;
     new_circle_line_color = randomColor;
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     randomColor = '#' + randomColor;
     new_line_color = randomColor;
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     randomColor = '#' + randomColor;
     new_dot_line_color = randomColor;
-    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     randomColor = '#' + randomColor;
     new_background_color = randomColor;
     return [new_radius, new_num_lines, new_num_dot_lines, new_circle_color, new_circle_line_color, new_line_color, new_dot_line_color, new_background_color]
