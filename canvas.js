@@ -187,21 +187,14 @@ function graduallyChangeParams() {
         radius_el.value != new_params[0] ||
         num_lines_el.value != new_params[1] ||
         num_dot_lines_el.value != new_params[2]
-        // circle_color_el.value !== new_params[3]
-
         ) {
         myReq = requestAnimationFrame(graduallyChangeParams);
     } else {
         cancelAnimationFrame(myReq);
-        // ("reached good");
-        // new_params = returnRandomizeParams();
     }
 
     if (elapsed > fpsInterval) {
         then = now - (elapsed % fpsInterval);
-
-        
-
         if (radius_el.value > new_params[0]) {
             dif = radius_el.value - new_params[2]
             if (dif >= 4) {
@@ -210,7 +203,6 @@ function graduallyChangeParams() {
                 radius_el.value -= 1;
             }
         } else if (radius_el.value == new_params[0]) {
-            // ("radius done")
         } else {
             dif = new_params[0] - radius_el.value;
             if (dif >= 4) {
@@ -231,7 +223,6 @@ function graduallyChangeParams() {
                 num_lines_el.value -= 1;
             }
         } else if (num_lines_el.value == new_params[1]) {
-            console.log("main lines done")
         } else {
             dif = new_params[1] - num_lines_el.value;
             if (dif >= 4) {
@@ -244,7 +235,6 @@ function graduallyChangeParams() {
             }
         }
 
-    
         if (num_dot_lines_el.value > new_params[2]) {
             dif = num_dot_lines_el.value - new_params[2]
             if (dif >= 4) {
@@ -253,7 +243,6 @@ function graduallyChangeParams() {
                 num_dot_lines_el.value -= 1;
             }
         } else if (num_dot_lines_el.value == new_params[2]) {
-            // ("sub lines done")
         }
         else {
             dif = new_params[2] - num_dot_lines_el.value;
@@ -267,41 +256,6 @@ function graduallyChangeParams() {
             }
         }
 
-        // if (circle_color_el.value !== new_params[3]) {
-
-        //     circle_color_num = circle_color_el.value.slice(1)
-        //     new_circle_color_num = new_params[3].slice(1)
-
-        //     circle_color_num = parseInt(circle_color_num, 16);
-        //     new_circle_color_num = parseInt(new_circle_color_num, 16);
-
-        //     console.log([
-        //         circle_color_el.value,
-        //         new_params[3],
-        //         circle_color_num,
-        //         new_circle_color_num
-        //     ])
-
-        //     if (circle_color_num < new_circle_color_num) {
-        //         circle_color_num++;
-        //         circle_color_num = circle_color_num.toString(16);
-        //         circle_color_num = '#' + circle_color_num;
-        //         circle_color_el.value = circle_color_num;
-                
-        //     }
-            
-        //     if (circle_color_num > new_circle_color_num) {
-        //         dif = new_circle_color_num - circle_color_num;
-        //         circle_color_num -= 1;
-        //         circle_color_num = circle_color_num.toString(16);
-        //         circle_color_num = '#' + circle_color_num;
-        //         circle_color_el.value = circle_color_num;
-
-        //     }
-        // }
-
-       
-        // unfinished color code
         if (circle_color_el.value !== new_params[3] && circle_color_el.value.length == new_params[3].length) {
 
             temp_idx = 0
@@ -383,96 +337,11 @@ function graduallyChangeParams() {
                 temp_idx++
             }
         }
-            
-
-    //         hex = '0123456789abcdef'
-
-    //         // circle_color_string = circle_color_el.value.slice(1)
-    //         // new_circle_color_string = new_params[3].slice(1)
-
-    //         // circle_color_num = parseInt(circle_color_num,16);
-    //         // new_circle_color_num = parseInt(new_circle_color_num, 16);
-
-    //         // ([
-    //         //     circle_color_el.value,
-    //         //     new_params[3],
-    //         //     circle_color_num,
-    //         //     new_circle_color_num
-    //         // ])
-
-    //         for (i = 1; i < 7; i++) {
-
-    //             cur_idx = hex.indexOf(circle_color_el.value[i])
-    //             new_idx = hex.indexOf(new_params[3][i])
-
-    //             if (cur_idx < new_idx ){
-    //                 setCharAt(circle_color_el.value, cur, chr)
-    //             } else if (hex.indexOf(circle_color_el.value[i]) < hex.indexOf(new_params[3][i]))
-    //         }
-            
-    //         if (circle_color_num < new_circle_color_num) {
-    //             circle_color_num++;
-    //             circle_color_num = circle_color_num.toString(16);
-    //             circle_color_num = '#' + circle_color_num;
-    //             circle_color_el.value = circle_color_num;
-
-    //         }
-
-    //         if (circle_color_num > new_circle_color_num) {
-    //             circle_color_num -= 1;
-    //             circle_color_num = circle_color_num.toString(16);
-    //             circle_color_num = '#' + circle_color_num;
-    //             circle_color_el.value = circle_color_num;
-
-    //         }
        
-
-
     } else {
         cancelAnimationFrame(myReq);
-      
-        
-        // new_params = returnRandomizeParams();
     }
-
-    
-
-
-
-    // if (
-    //     radius_el.value != new_params[0] ||
-    //     num_lines_el.value != new_params[1] ||
-    //     num_dot_lines_el.value != new_params[2]
-    //     // circle_color_el.value !== new_params[3]
-
-    // ) {
-    //     new_params = returnRandomizeParams();
-    // }
 }
-
-// function animate() {
-
-//     // request another frame
-
-//     requestAnimationFrame(animate);
-
-//     // calc elapsed time since last loop
-
-//     now = Date.now();
-//     elapsed = now - then;
-
-//     // if enough time has elapsed, draw the next frame
-
-//     if (elapsed > fpsInterval) {
-
-//         // Get ready for next frame by setting then=now, but also adjust for your
-//         // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
-//         then = now - (elapsed % fpsInterval);
-
-//         // Put your drawing code here
-
-//     }
-// }
 
 function drawLine() {
     ctx.beginPath();
@@ -501,7 +370,6 @@ function animate() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     num_lines = num_lines_el.value;
     num_dot_lines = num_dot_lines_el.value;
-    // radius = radius_el.value;
     circle_color = circle_color_el.value
     circle_line_color = circle_line_color_el.value
     line_color = line_color_el.value
