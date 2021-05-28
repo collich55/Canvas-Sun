@@ -290,8 +290,7 @@ function graduallyChangeParams() {
 
             temp_idx = 0
 
-            console.log(line_color_el.value);
-            console.log(new_params[5]);
+          
             not_changed = true;
 
 
@@ -307,8 +306,7 @@ function graduallyChangeParams() {
 
             temp_idx = 0
 
-            console.log(dot_line_color_el.value);
-            console.log(new_params[6]);
+        
             not_changed = true;
 
 
@@ -324,8 +322,7 @@ function graduallyChangeParams() {
 
             temp_idx = 0
 
-            console.log(background_color_el.value);
-            console.log(new_params[7]);
+        
             not_changed = true;
 
 
