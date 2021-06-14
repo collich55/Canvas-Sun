@@ -60,7 +60,6 @@ dot_line_color = dot_line_color_el.value
 background_color = background_color_el.value
 var randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
-// let radius = radius_el.value;
 let num_lines = num_lines_el.value;
 let num_dot_lines = num_dot_lines_el.value;
 
@@ -175,13 +174,8 @@ let dif = 0
 function graduallyChangeParams() {
     myReq = requestAnimationFrame(graduallyChangeParams);
 
-    
-
     now = Date.now();
     elapsed = now - then;
-    
-
-    // new_params = returnRandomizeParams();
 
     if (
         radius_el.value != new_params[0] ||
