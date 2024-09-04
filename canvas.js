@@ -437,7 +437,7 @@ function updateSaveStr() {
 
 function implementSave() {
     actual_save_str_el = document.querySelector('#actualInputText');
-    actual_save_str_arr = save_str_el.split("|")
+    actual_save_str_arr = save_str_el.value.split("|")
     radius_el.value = actual_save_str_arr[0]
     num_lines_el.value = actual_save_str_arr[1]
     num_dot_lines_el.value = actual_save_str_arr[2]
