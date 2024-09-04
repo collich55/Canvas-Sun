@@ -48,7 +48,7 @@ document.addEventListener("keypress", function (event) {
     }
 })
 
-function randomWithAnimation() {
+function randomizeWithAnimation() {
     new_params = returnRandomizeParams();
     startGraduallyChangeParams(60);
 }
