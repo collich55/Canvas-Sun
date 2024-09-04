@@ -78,6 +78,10 @@
             padding-bottom: 10px;
             border-bottom: 1px darkred solid;
         }
+
+        .saveTextLabel {
+            margin-top: 40px
+        }
             
     
     </style>
@@ -104,9 +108,9 @@
         <label for="background-color">Background Color</label>
         <input class="background-color" type="color" value="#ffffff">
         <button onclick="randomizeParams()" >Randomize</button>
-        <label for="inputText">Save Text</label>
+        <label id="saveTextLabel" for="inputText">Copy to Save Inputs</label>
         <input type="text" id="inputText" placeholder="error">
-        <label for="actualInputText">Saved Text Input</label>
+        <label for="actualInputText">Enter Saved Text Inputs</label>
         <input type="text" id="actualInputText" placeholder="Saved Text Goes Here">
         <button onclick="implementSave()">Submit</button>
         
