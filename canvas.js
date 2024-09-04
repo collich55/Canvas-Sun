@@ -435,7 +435,7 @@ function createSaveStr(){
     return saveStr
 }
 
-function updateSaveStr() {
+function updateSaveStr(){
     save_str_el = document.querySelector('#inputText');
     save_str_el.value = createSaveStr()
 }
