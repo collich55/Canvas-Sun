@@ -417,10 +417,7 @@ function animate() {
     i = 0
 }
 
-function updateSaveStr() {
-    save_str_el = document.querySelector('#inputText');
-    save_str_el.value = createSaveStr()
-}
+
 
 function createSaveStr(){
 
@@ -436,6 +433,11 @@ function createSaveStr(){
     ]
     let saveStr = saveArr.join("|")
     return saveStr
+}
+
+function updateSaveStr() {
+    save_str_el = document.querySelector('#inputText');
+    save_str_el.value = createSaveStr()
 }
 
     
