@@ -440,6 +440,19 @@ function updateSaveStr() {
     save_str_el.value = createSaveStr()
 }
 
+function implementSave() {
+    save_str_el = document.querySelector('#inputText');
+    save_str_arr = save_str_el.split("|")
+    radius_el.value = save_str_arr[0]
+    num_lines_el.value = save_str_arr[1]
+    num_dot_lines_el.value = save_str_arr[2]
+    circle_color_el.value = save_str_arr[3]
+    circle_line_color_el.value = save_str_arr[4]
+    line_color_el.value = save_str_arr[5]
+    dot_line_color_el.value = save_str_arr[6]
+    background_color_el.value = save_str_arr[7]
+}
+
     
 
 animate();
