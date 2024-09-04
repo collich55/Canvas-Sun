@@ -417,10 +417,9 @@ function animate() {
     i = 0
 }
 
-
 function updateSaveStr() {
-    save_str_el = document.querySelector('#myTextBox');
-    save_str_el.value = ()
+    save_str_el = document.querySelector('#inputText');
+    save_str_el.value = createSaveStr()
 }
 
 function createSaveStr(){
