@@ -437,6 +437,9 @@ function updateSaveStr() {
 function implementSave() {
     actual_save_str_el = document.querySelector('#actualInputText');
     actual_save_str_arr = actual_save_str_el.value.split("|")
+    actual_save_str_arr[0] = parseInt(actual_save_str_arr[0])
+    actual_save_str_arr[1] = parseInt(actual_save_str_arr[1])
+    actual_save_str_arr[2] = parseInt(actual_save_str_arr[2])
     new_params = actual_save_str_arr;
     startGraduallyChangeParams(60);
     // radius_el.value = actual_save_str_arr[0]
