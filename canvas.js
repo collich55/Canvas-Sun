@@ -36,7 +36,6 @@ document.addEventListener("keypress", function (event) {
 document.addEventListener("keypress", function (event) {
     if (event.key == 'r') {
         randomizeParams();
-        updateSaveStr();
     }
 })
 
@@ -415,6 +414,7 @@ function animate() {
         i += 1;
     }
     drawCircle();
+    updateSaveStr();
     i = 0
     
 }
