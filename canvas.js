@@ -48,6 +48,11 @@ document.addEventListener("keypress", function (event) {
     }
 })
 
+function randomWithAnimation() {
+    new_params = returnRandomizeParams();
+    startGraduallyChangeParams(60);
+}
+
 
 radius_el.value = 40
 num_lines_el.value = 1;
