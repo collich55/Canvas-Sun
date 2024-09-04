@@ -39,6 +39,12 @@ document.addEventListener("keypress", function (event) {
     }
 })
 
+document.addEventListener("keypress", function (event) {
+    if (event.key == 's') {
+        
+    }
+})
+
 
 document.addEventListener("keypress", function (event) {
     if (event.key == 'a') {
