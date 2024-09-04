@@ -78,6 +78,20 @@
             padding-bottom: 10px;
             border-bottom: 1px darkred solid;
         }
+            
+        .readonly-textarea {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            height: 100px;
+            resize: none;
+            background-color: #f9f9f9;
+            overflow: hidden;
+        }
+        .readonly-textarea[readonly] {
+            cursor: default;
+        }
+    
     </style>
 </head>
 <body>
@@ -102,6 +116,8 @@
         <label for="background-color">Background Color</label>
         <input class="background-color" type="color" value="#ffffff">
         <button onclick="randomizeParams()" >Randomize</button>
+        <textarea class="readonly-textarea" readonly id="myTextBox"></textarea>
+        
         <p>Press r to randomize all parameters</p>
         <p>Press a to randomize all parameters with animation</p>
         <p>Press h to hide inputs</p>
