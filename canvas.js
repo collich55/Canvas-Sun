@@ -48,12 +48,6 @@ document.addEventListener("keypress", function (event) {
     }
 })
 
-function randomizeWithAnimation() {
-    new_params = returnRandomizeParams();
-    startGraduallyChangeParams(60);
-}
-
-
 radius_el.value = 40
 num_lines_el.value = 1;
 num_dot_lines_el.value = 6;
@@ -453,6 +447,10 @@ function implementSave() {
     background_color_el.value = actual_save_str_arr[7]
 }
 
+function randomizeWithAnimation() {
+    new_params = returnRandomizeParams();
+    startGraduallyChangeParams(60);
+}
     
 
 animate();
