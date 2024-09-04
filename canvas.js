@@ -41,7 +41,7 @@ document.addEventListener("keypress", function (event) {
 
 document.addEventListener("keypress", function (event) {
     if (event.key == 's') {
-        
+        updateSaveStr()
     }
 })
 
@@ -64,6 +64,8 @@ circle_line_color = circle_line_color_el.value
 line_color = line_color_el.value
 dot_line_color = dot_line_color_el.value
 background_color = background_color_el.value
+
+
 var randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
 let num_lines = num_lines_el.value;
@@ -153,6 +155,8 @@ function returnRandomizeParams() {
     new_background_color = randomColor;
     return [new_radius, new_num_lines, new_num_dot_lines, new_circle_color, new_circle_line_color, new_line_color, new_dot_line_color, new_background_color]
 }
+
+
 
 let new_params = returnRandomizeParams();
 
@@ -412,5 +416,29 @@ function animate() {
     drawCircle();
     i = 0
 }
+
+
+function updateSaveStr() {
+    save_str_el = document.querySelector('#myTextBox');
+    save_str_el.value = ()
+}
+
+function createSaveStr(){
+
+    let saveArr = [
+        radius_el.value,
+        num_lines_el.value,
+        num_dot_lines_el.value,
+        circle_color_el.value,
+        circle_line_color_el.value,
+        line_color_el.value,
+        dot_line_color_el.value,
+        background_color_el.value
+    ]
+    let saveStr = saveArr.join("|")
+    return saveStr
+}
+
+    
 
 animate();
