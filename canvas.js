@@ -414,7 +414,9 @@ function animate() {
         i += 1;
     }
     drawCircle();
+    updateSaveStr()
     i = 0
+    
 }
 
 
