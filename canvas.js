@@ -40,13 +40,6 @@ document.addEventListener("keypress", function (event) {
 })
 
 document.addEventListener("keypress", function (event) {
-    if (event.key == 's') {
-        updateSaveStr()
-    }
-})
-
-
-document.addEventListener("keypress", function (event) {
     if (event.key == 'a') {
         // if (a_key_down) {
         new_params = returnRandomizeParams();
