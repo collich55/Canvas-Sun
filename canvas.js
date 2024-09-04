@@ -419,7 +419,7 @@ function animate() {
 
 
 
-function createSaveStr(){
+function createSaveStr() {
 
     let saveArr = [
         radius_el.value,
@@ -435,9 +435,8 @@ function createSaveStr(){
     return saveStr
 }
 
-function updateSaveStr(){
-    save_str_el = document.querySelector('#inputText');
-    save_str_el.value = createSaveStr()
+function updateSaveStr() {
+    return "test"
 }
 
     
