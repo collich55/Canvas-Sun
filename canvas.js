@@ -19,19 +19,52 @@ dot_line_color_el = document.querySelector('.dot-line-color');
 background_color_el = document.querySelector('.background-color');
 let not_changed = true;
 
-buttons_opacity = true;
+// buttons_opacity = true;
+
+// document.addEventListener("keypress", function (event) {
+//     if (event.key == 'h') {
+//         if (buttons_opacity) {
+//             buttons.style = "opacity: 0;"
+//             buttons_opacity = false;
+//         } else {
+//             buttons.style = "opacity: 1;"
+//             buttons_opacity = true;
+//         }
+//     }
+// })
+
+
+let buttons_opacity = true;
+let lastTap = 0;
 
 document.addEventListener("keypress", function (event) {
-    if (event.key == 'h') {
-        if (buttons_opacity) {
-            buttons.style = "opacity: 0;"
-            buttons_opacity = false;
-        } else {
-            buttons.style = "opacity: 1;"
-            buttons_opacity = true;
-        }
+    if (event.key === 'h') {
+        toggleOpacity();
     }
-})
+});
+
+document.addEventListener("touchstart", function (event) {
+    const currentTime = new Date().getTime();
+    const tapLength = currentTime - lastTap;
+
+    if (tapLength < 300 && tapLength > 0) {
+        toggleOpacity();
+    }
+
+    lastTap = currentTime;
+});
+
+function toggleOpacity() {
+    if (buttons_opacity) {
+        buttons.style.opacity = "0";
+        buttons_opacity = false;
+    } else {
+        buttons.style.opacity = "1";
+        buttons_opacity = true;
+    }
+}
+
+
 
 document.addEventListener("keypress", function (event) {
     if (event.key == 'r') {
